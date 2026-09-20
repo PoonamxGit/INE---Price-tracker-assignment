@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: ine-price-tracker-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: CRON_SECRET
+        generateValue: true
+      - key: SCRAPER_TIMEOUT_MS
+        value: 45000
+      - key: SCRAPER_MAX_ATTEMPTS
+        value: 3

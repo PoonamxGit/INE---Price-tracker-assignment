@@ -1,0 +1,36 @@
+{
+  "name": "ine-price-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "engines": {
+    "node": "\u003e=22"
+  },
+  "scripts": {
+    "dev:server": "npm run dev -w server",
+    "dev:client": "npm run dev -w client",
+    "start": "npm start -w server",
+    "build": "npm run build -w client",
+    "test": "node --test server/test/*.test.js",
+    "lint": "eslint .",
+    "scrape": "node --env-file-if-exists=.env server/src/cli.js",
+    "scrape:headed": "node --env-file-if-exists=.env server/src/cli.js --headed",
+    "test:scraper:live": "node --env-file-if-exists=.env server/test/live.js",
+    "test:browser": "node --test --test-concurrency=1 server/test/*.browser.js",
+    "test:headed:live": "node server/test/headed-live.js"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.3.14",
+    "@eslint/js": "^9.39.0",
+    "eslint": "^9.39.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^16.5.0",
+    "prettier": "^3.9.8",
+    "supertest": "^7.1.4"
+  }
+}
